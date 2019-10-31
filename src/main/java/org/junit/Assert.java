@@ -5,6 +5,7 @@ import org.hamcrest.MatcherAssert;
 import org.junit.internal.ArrayComparisonFailure;
 import org.junit.internal.ExactComparisonCriteria;
 import org.junit.internal.InexactComparisonCriteria;
+import java.util.Comparator;
 
 /**
  * A set of assertion methods useful for writing tests. Only failed assertions
@@ -26,6 +27,21 @@ public class Assert {
      * Protect constructor since it is a static only class
      */
     protected Assert() {
+    }
+    
+    /**
+     * Asserts that the first object is greater than the second one based on the comparator
+     *
+     * @param o1 first object
+     * @param o2 second object
+     * @param comparator comparator
+     */
+    static public <T> boolean assertGreaterThan(T o1, T o2, Comparator<T> comparator){
+        if (comparator.compare(o1, o2) > 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
