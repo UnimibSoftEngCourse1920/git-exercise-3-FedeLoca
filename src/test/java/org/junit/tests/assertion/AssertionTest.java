@@ -35,9 +35,7 @@ public class AssertionTest {
 // @Test (expected=AssertionError.class) public void error() {
 //      assert false;
 //  }
-
-    private static final String ASSERTION_ERROR_EXPECTED = "AssertionError expected";
-
+    
     @Test
     public void greater() {
         assertGreaterThan("aaa", "zzz", new Comparator<String>() {
@@ -50,12 +48,7 @@ public class AssertionTest {
                 return o1 - o2;
             }
         });
-        assertGreaterThan('a', 'z', new Comparator<Character>() {
-            public int compare(Character o1, Character o2) {
-                return o1 - o2;
-            }
-        });
-        assertGreaterThan('a', 'z', new Comparator<Double>() {
+        assertGreaterThan(5.0, 4.0, new Comparator<Double>() {
             public int compare(Double o1, Double o2) {
                 if((o1 - o2) > 0) {
                     return 1;
@@ -65,7 +58,14 @@ public class AssertionTest {
                 }
             }
         });
+        assertGreaterThan('a', 'z', new Comparator<Character>() {
+            public int compare(Character o1, Character o2) {
+                return o1 - o2;
+            }
+        });
     }
+
+    private static final String ASSERTION_ERROR_EXPECTED = "AssertionError expected";
     
     @Test(expected = AssertionError.class)
     public void fails() {

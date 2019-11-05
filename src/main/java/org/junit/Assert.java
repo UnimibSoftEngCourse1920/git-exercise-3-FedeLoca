@@ -29,46 +29,22 @@ public class Assert {
      */
     protected Assert() {
     }
-
+    
     /**
-     * Asserts that the first value is greater than the second one based on the comparator
+     * Asserts that the first object is greater than the second one based on the comparator
      *
-     * @param o1 first value
-     * @param o2 second value
+     * @param o1 first object
+     * @param o2 second object
      * @param comparator comparator
      */
-    static public boolean assertGreaterThan(int o1, int o2, Comparator<Integer> comparator){
+    static public <T> boolean assertGreaterThan(T o1, T o2, Comparator<T> comparator){
         if (comparator.compare(o1, o2) > 0) {
             return true;
         } else {
             return false;
         }
     }
-    
-    static public boolean assertGreaterThan(char o1, char o2, Comparator<Character> comparator){
-        if (comparator.compare(o1, o2) > 0) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-    
-    static public boolean assertGreaterThan(double o1, double o2, Comparator<Double> comparator){
-        if (comparator.compare(o1, o2) > 0) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-    
-    static public boolean assertGreaterThan(String o1, String o2, Comparator<String> comparator){
-        if (comparator.compare(o1, o2) > 0) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-    
+
     /**
      * Asserts that a condition is true. If it isn't it throws an
      * {@link AssertionError} with the given message.
